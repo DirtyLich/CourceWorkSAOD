@@ -8,17 +8,10 @@
 
 /**
  * @brief Выделяет память в куче для нового фильтра Блума.
- * 
- * @param size Размер внутреннего массива bit_vect 
+ *
+ * @param size Размер внутреннего массива bit_vect
  * @param num_functions Количество хэш-функций, используемых
  * @param ... Хэш-функции в виде переменного числа аргументов
- * 
- * Пример:
- * 
- * // uint32_t djb2(const void *buff, size_t length);
- * // uint32_t sdbm(const void *buff, size_t length);
- * 
- * bloom_filter *f = bloom_filter_new(1024, 2, djb2, sdbm);
  * 
  * @return bloom_filter* Динамически выделенный фильтр Блума
  */
@@ -47,9 +40,9 @@ bloom_filter *bloom_filter_new(size_t size, size_t num_functions, ...) {
 
 /**
  * @brief Выделяет память в куче для нового фильтра Блума
- * 
+ *
  * Фильтр Блума использует 2 хэш-функции по умолчанию (из hash.h): djb2 и sdbm.
- * 
+ *
  * @param size Размер внутреннего массива bit_vect
  * @return bloom_filter* Динамически выделенный фильтр Блума
  */
@@ -59,8 +52,8 @@ bloom_filter *bloom_filter_new_default(size_t size) {
 
 /**
  * @brief Освобождает память, связанную с фильтром Блума (включая внутренний массив bit_vect)
- * 
- * @param filter 
+ *
+ * @param filter
  */
 void bloom_filter_free(bloom_filter *filter) {
     bit_vect_free(filter->vect);
@@ -70,8 +63,8 @@ void bloom_filter_free(bloom_filter *filter) {
 
 /**
  * @brief Добавляет элемент в фильтр Блума
- * 
- * @param filter Фильтр Блума 
+ *
+ * @param filter Фильтр Блума
  * @param data Элемент для добавления в виде указателя const void*
  * @param length Длина элемента (данные читаются как uint8_t)
  */
@@ -85,7 +78,7 @@ void bloom_filter_put(bloom_filter *filter, const void *data, size_t length) {
 
 /**
  * @brief Добавляет строку (const char *str) в фильтр Блума
- * 
+ *
  * @param filter Фильтр Блума
  * @param str Строка, которую добавляют
  */
@@ -95,7 +88,7 @@ void bloom_filter_put_str(bloom_filter *filter, const char *str) {
 
 /**
  * @brief Проверяет, найден ли элемент в фильтре Блума
- * 
+ *
  * @param filter Фильтр Блума
  * @param data Элемент для проверки
  * @param lentgth Длина элемента (данные читаются как uint8_t)
@@ -114,7 +107,7 @@ bool bloom_filter_test(bloom_filter *filter, const void *data, size_t length) {
 
 /**
  * @brief Проверяет, найдена ли строка (const char *str) в фильтре Блума
- * 
+ *
  * @param filter  Фильтр Блума
  * @param str Строка, которую проверяют
  * @return true Если строка найдена

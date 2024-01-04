@@ -1,13 +1,3 @@
-/**
- * @file bitutil.h
- * @author nomemory
- * @brief Файл, содержащий макросы для манипуляций с битами в массиве бит
- * @version 0.1
- * @date 2022-03-09
- * 
- * @copyright Copyright (c) 2022
- * 
- */
 
 #ifndef BITUTIL_H
 
